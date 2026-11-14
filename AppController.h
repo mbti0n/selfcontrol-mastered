@@ -101,4 +101,6 @@
 // Toggles the popover visibility
 - (void)togglePopover:(id)sender;
 
+- (void)dismissMenuPanel;
+
 @end

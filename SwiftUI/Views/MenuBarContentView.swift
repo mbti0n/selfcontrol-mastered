@@ -60,6 +60,15 @@ struct MenuBarContentView: View {
         }
         .frame(width: 450, height: 380)
         .blockTimerCoordination()
+        .onExitCommand {
+            if showSettings {
+                withAnimation(.easeOut(duration: NothingTheme.transitionDuration)) {
+                    showSettings = false
+                }
+            } else {
+                (NSApp.delegate as? AppController)?.dismissMenuPanel()
+            }
+        } 
         .onChange(of: timer.hasStarted) { _, started in
             // Close settings when transitioning back to idle
             if !started && showSettings {

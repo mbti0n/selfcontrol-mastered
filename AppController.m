@@ -338,6 +338,7 @@
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
     [settings_ synchronizeSettings];
+    [TimerPillWindowController.shared hide];
 }
 
 - (SMAppService *)daemonService {
@@ -403,7 +404,7 @@
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
     // Menu bar app should always persist. Cancel termination.
-    return NSTerminateCancel;
+    return NSTerminateNow;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed: (NSApplication*) theApplication {
